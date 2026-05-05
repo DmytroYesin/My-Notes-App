@@ -6,13 +6,15 @@ export type ListItemProps = {
   title: string;
   description: string;
   updateDate: string;
+  onPress?: () => void;
 };
 
-export function ListItem({ title, description, updateDate }: ListItemProps) {
+export function ListItem({ title, description, updateDate, onPress }: ListItemProps) {
   return (
     <List.Item
       title={title}
       description={description}
+      {...(onPress ? { onPress } : {})}
       right={() => (
         <View style={styles.rightContainer}>
           <Text variant="labelSmall" style={styles.dateText}>
